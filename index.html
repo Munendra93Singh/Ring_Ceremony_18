@@ -1879,7 +1879,7 @@
               aria-label="Get directions to the Wedding venue on Google Maps">
               <span class="pin" aria-hidden="true">📍</span>समारोह स्थल तक पहुँचने का रास्ता देखें
             </a>
-            
+
           </div>
         </div>
       </div>
@@ -2007,7 +2007,7 @@
 
       <p class="rsvp-phone reveal-up">
         <strong>+91 8006783286</strong><br><strong>+91 9412258372</strong><br>
-        <em>सादर आमंत्रण, सप्रेम स्वागत।</em>
+        <em>सस्नेह आमंत्रण एवं हार्दिक स्वागत</em>
       </p>
     </div>
     <div class="ornament">✦</div>
@@ -2308,6 +2308,21 @@
         }
       });
     }
+
+
+    // ======================Count Page======
+
+    fetch("https://munendrasingh93.goatcounter.com/counter/TOTAL.json")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("visitor-count").textContent =
+          Number(data.count).toLocaleString("en-IN");
+      })
+      .catch(error => {
+        console.error("Visitor count error:", error);
+        document.getElementById("visitor-count").textContent = "—";
+      });
+
   </script>
 
   <!-- ============================================
@@ -2469,6 +2484,32 @@
         font-size: 9pt;
         color: #5a3010;
       }
+
+
+      .visitor-counter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 20px;
+        margin: 20px auto;
+        width: fit-content;
+        background: #fff8ef;
+        border: 1px solid #d6b477;
+        border-radius: 30px;
+        color: #713b30;
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      .visitor-counter .visitor-icon {
+        font-size: 20px;
+      }
+
+      .visitor-counter strong {
+        color: #a27632;
+        font-size: 18px;
+      }
     </style>
     <div class="pc-border">
       <span class="pc-corner tl">✦</span>
@@ -2523,6 +2564,14 @@
       </div>
     </div>
   </div>
+
+
+<div class="visitor-counter">
+    <span class="visitor-icon">👥</span>
+    <span>कुल आगंतुक</span>
+    <strong id="visitor-count">Loading...</strong>
+</div>
+
 
 </body>
 
